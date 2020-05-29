@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Warung Sate</string>
+
+    <string-array name="data_nama">
+        <item>Sate Ayam</item>
+        <item>Sate Kambing</item>
+        <item>Sate Sapi</item>
+        <item>Gule</item>
+        <item>Nasi</item>
+    </string-array>
+
+    <string-array name="data_deskripsi">
+        <item>Sate yang tebuat dari daging ayam.
+        </item>
+    <item>Sate yang terbuat dari daging kambing.
+        </item>
+    <item>Sate yang terbuat dari daging sapi.
+        </item>
+    <item>Gule dengan kuah kaldu berisi daging kambing
+        </item>
+    <item>Nasi
+        </item>
+</string-array>
+
+    <string-array name="data_image">
+        <item>@drawable/sate_ayam</item>
+        <item>@drawable/sate_kambing</item>
+        <item>@drawable/sate_sapi</item>
+        <item>@drawable/gule</item>
+        <item>@drawable/nasi</item>
+    </string-array>
+
+    <string-array name="data_harga">
+        <item>Rp. 20.000
+        </item>
+        <item>Rp. 30.000
+        </item>
+        <item>Rp. 40.000
+        </item>
+        <item>Rp. 20.000
+        </item>
+        <item>Rp. 5.000
+        </item>
+    </string-array>
+
+</resources>
