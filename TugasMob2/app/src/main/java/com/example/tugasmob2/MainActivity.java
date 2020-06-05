@@ -26,7 +26,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MenuAdapter.OnItemClickListener {
+    public static final String EXTRA_Nama = "nama";
+    public static final String EXTRA_Deskripsi = "deskripsi";
+    public static final String EXTRA_Gambar = "gambar";
+
     private MenuAdapter menuAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Menu> menus;
@@ -59,10 +63,13 @@ public class MainActivity extends AppCompatActivity {
                                 String gambarmenu = data.getString("gambar");
                                 String namamenu = data.getString("nama");
                                 String hargamenu = data.getString("harga");
-                                menus.add(new Menu(namamenu,hargamenu,gambarmenu));
+                                String deskripsi = data.getString("keterangan");
+                                menus.add(new Menu(namamenu,hargamenu,gambarmenu,deskripsi));
                             }
                             menuAdapter = new MenuAdapter(MainActivity.this, menus);
                             recyclerView.setAdapter(menuAdapter);
+                            menuAdapter.setOnItemClickListener(MainActivity.this);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -77,4 +84,15 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, DetailActivity.class);
+        Menu clickedItem = menus.get(position);
+
+        detailIntent.putExtra(EXTRA_Gambar, clickedItem.getGambar());
+        detailIntent.putExtra(EXTRA_Nama , clickedItem.getNama());
+        detailIntent.putExtra(EXTRA_Deskripsi , clickedItem.getDeskripsi1());
+
+        startActivity(detailIntent);
+    }
 }

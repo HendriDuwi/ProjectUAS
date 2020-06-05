@@ -18,6 +18,15 @@ import java.util.ArrayList;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder> {
     private Context context;
     private ArrayList<Menu> menus;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick (int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
 
     public MenuAdapter(Context mcontext, ArrayList<Menu> menumakanan){
         context = mcontext;
@@ -64,7 +73,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             tvhargadata = itemView.findViewById(R.id.tv_harga);
             tvnamadata = itemView.findViewById(R.id.tv_nama);
 
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

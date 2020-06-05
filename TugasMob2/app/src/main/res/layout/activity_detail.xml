@@ -68,7 +68,7 @@
             android:layout_marginBottom="16dp"
             android:lineSpacingMultiplier="1"
             android:textColor="@android:color/black"
-            android:text="Detail Deskripsi"
+            android:text="Deskripsi"
             android:id="@+id/tv_deskripsi"
 
             />

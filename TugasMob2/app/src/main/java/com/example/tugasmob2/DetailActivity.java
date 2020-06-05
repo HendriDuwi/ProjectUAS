@@ -10,7 +10,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.net.URISyntaxException;
+
+import static com.example.tugasmob2.MainActivity.EXTRA_Deskripsi;
+import static com.example.tugasmob2.MainActivity.EXTRA_Gambar;
+import static com.example.tugasmob2.MainActivity.EXTRA_Nama;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -26,6 +32,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        Intent intent = getIntent();
+        String gambar = intent.getStringExtra(EXTRA_Gambar);
+        String nama = intent.getStringExtra(EXTRA_Nama);
+        String deskripsi = intent.getStringExtra(EXTRA_Deskripsi);
+
         TextView tvnama = findViewById(R.id.tv_nama);
         TextView tvharga = findViewById(R.id.tv_harga);
         TextView tvdeskripsi = findViewById(R.id.tv_deskripsi);
@@ -33,12 +44,9 @@ public class DetailActivity extends AppCompatActivity {
         Button btnbeli = findViewById(R.id.btn_beli);
 
 
-        tvnama.setText(getIntent().getStringExtra(datanama));
-        tvdeskripsi.setText(getIntent().getStringExtra(datadeskripsi));
-        tvharga.setText(getIntent().getStringExtra(dataharga));
-        ivgambar.setImageResource(getIntent().getIntExtra(datagambar,0));
-
-
+        Glide.with(this).load(gambar).fitCenter().into(ivgambar);
+        tvnama.setText(nama);
+        tvdeskripsi.setText(deskripsi);
     }
 
 }

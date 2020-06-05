@@ -11,4 +11,11 @@
         android:id="@+id/rv_list"
         tools:listitem="@layout/item_menu"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tv_deskripsi1"/>
+
+
+
 </RelativeLayout>
